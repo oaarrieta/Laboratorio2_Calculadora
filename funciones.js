@@ -18,7 +18,7 @@ function calcular() {
         <div id="mensajeGracias" class="mensaje-adicional">¡GRACIAS POR USAR LA CALCULADORA BÁSICA DE OPERACIONES!</div>
         <div id="mensajeContinuar" class="mensaje-adicional">Si desea seguir realizando otras operaciones, por favor presiona el boton Limpiar y a continuación ingrese los siguientes numeros y seleccione  operación a realizar</div>
     `;
-    
+
     ultimaOperacion = {
         num1: num1,
         num2: num2,
@@ -29,8 +29,8 @@ function calcular() {
 
 function realizarOperacion(num1, num2, operacion) {
     switch(operacion.toLowerCase()) {
-        case "seleccione una operación":
-            return "Selecciona una operación";
+        case "seleccione":
+            return "Selecciona la operación a realizar";
         case "suma":
             return num1 + num2;
         case "resta":
@@ -50,11 +50,13 @@ function limpiar() {
     document.getElementById('num2').value = "";
     document.getElementById('operacion').selectedIndex = 0;
     document.getElementById('resultado').innerHTML = "Resultado: ";
-
+    
+    // Limpiar también los mensajes adicionales
     document.getElementById('mensajeGracias')?.remove();
     document.getElementById('mensajeContinuar')?.remove();
 }
 
+// Configurar event listeners cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("btnCalcular").addEventListener("click", calcular);
     document.getElementById("btnLimpiar").addEventListener("click", limpiar);
